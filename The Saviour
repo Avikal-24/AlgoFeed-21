@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std ; 
+#define ll long long int
+
+// THE SAVIOUR
+
+int main()
+{
+    
+    ll n,x ;
+    cin>>n>>x ;
+    ll v[n] ; 
+    for(int i=0 ; i<n ; i++)
+    {
+         cin>>v[i] ; 
+    }
+    
+    sort(v,v+n) ;  // array is sorted now
+           
+    ll ans=0;
+    ll i=0, j=n-1 ;  
+    // currently v[i] point to the lightest man and v[j] to the heaviest man
+    // 
+            
+            while(i<=j)
+            {
+                ans++ ;   // we call 1 helicopter
+                if( v[i]+v[j]<=x ){ i++ ; j-- ; }   
+                // if current lightest and heaviest men can be accomodated into single helicopter, we send them.
+                // now we have people from i+1 to j-1 left  
+                
+                else j--  ;
+                // else we use the current helicopter ONLY to send the heaviest person. 
+                // now we have people from i to j-1 left  
+            }
+    
+    cout<<ans<<"\n" ;
+    
+       return 0;
+}
