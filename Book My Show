@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// BOOK MY SHOW
+
+int help(bool arr[][10] , int x)
+{
+    if( arr[x][1]==0 && arr[x][2]==0 && arr[x][3]==0 && arr[x][4]==0 && arr[x][5]==0 && arr[x][6]==0 && arr[x][7]==0 && arr[x][8]==0) 
+        return 2 ; 
+    
+    if( arr[x][1]==0 && arr[x][2]==0 && arr[x][3]==0 && arr[x][4]==0 ) return 1 ;
+    if( arr[x][3]==0 && arr[x][4]==0 && arr[x][5]==0 && arr[x][6]==0 ) return 1 ; 
+    if( arr[x][5]==0 && arr[x][6]==0 && arr[x][7]==0 && arr[x][8]==0 ) return 1 ;
+        
+    return 0 ; 
+}
+int main() {
+   
+    int n,x;
+    cin>>n>>x ; 
+    
+    bool arr[n][10] ; 
+    memset( arr,0, sizeof arr ) ; // initialising whole array to 0.
+    for(int i=0 ; i<x ; i++)
+    {
+        int p,q ; 
+        cin>>p>>q ; 
+        p-- ; q-- ; 
+        arr[p][q]=1 ; // 1 symbolises seat to be left vacant.
+    }
+    
+    int ans=0 ; 
+    for(int i=0 ; i<n ; i++)
+    {
+        ans+= help(arr,i) ; 
+        // this func will give the answer to ith row.
+    }
+    cout<<ans ;
+    
+    return 0;
+}
