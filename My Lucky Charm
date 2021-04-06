@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+// MY LUCKY CHARM
+int main()
+{
+    string s ; 
+    cin>>s ; 
+    
+    int x=0 ; 
+    for(int i=0 ; i<s.size() ; i++)
+    {
+        if( i%2==0 ){ x+= ( s[i]-'0' ) ;  }
+        else { x-=s[i]-'0' ;  }
+    }
+
+    bool f= x%11==0 ; 
+    cout<<f ;
+
+    return 0;
+}
