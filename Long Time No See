@@ -1,0 +1,72 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+// LONG TIME NO SEE
+
+vector<vector<int>> Intersection(vector<vector<int>> a, vector<vector<int>> b) {
+        
+        
+        vector<vector<int>>ans ; 
+        vector<int>v(2) ; 
+        
+        int n1=a.size() , n2=b.size() ; 
+        int i=0 , j=0 ; 
+        
+        while(1)
+        {
+            if(i>=n1 || j>=n2) break ; 
+            if( a[i][1] < b[j][0] ) { i++ ; continue ; }
+            if( b[j][1] < a[i][0] ) { j++ ; continue ; }
+            
+            v[0]= max( a[i][0] , b[j][0] ) ; 
+            v[1]= min( a[i][1] , b[j][1] ) ;
+            ans.push_back(v) ; 
+            
+            if( a[i][1] < b[j][1] ) { i++ ; continue ; }
+            if( b[j][1] < a[i][1] ) { j++ ; continue ; }
+            i++ ; j++ ;
+            
+            
+        }
+        return ans ;
+    }
+
+int main() {
+    
+    vector<vector<int>>a,b,ans ; 
+    vector<int>temp ; 
+    temp.push_back(0) ; temp.push_back(0) ; 
+    
+    int n1,n2 ; 
+    cin>>n1 ; 
+    
+    for(int i=0 ; i<n1 ; i++)
+    {
+        int x,y ; 
+        cin>>x>>y ; 
+        temp[0]=x ; temp[1]=y ; 
+        a.push_back(temp) ; 
+    }
+    
+    cin>>n2 ; 
+    
+    for(int i=0 ; i<n2 ; i++)
+    {
+        int x,y ; 
+        cin>>x>>y ; 
+        temp[0]=x ; temp[1]=y ; 
+        b.push_back(temp) ; 
+    }
+    ans=Intersection(a,b) ; 
+    for(int i=0 ; i<ans.size() ; i++)
+    {
+        cout<<ans[i][0]<<" "<<ans[i][1]<<"\n" ; 
+    }
+    
+    return 0;
+}
