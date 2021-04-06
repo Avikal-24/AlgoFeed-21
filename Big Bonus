@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// BIG BONUS
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    int a,b ; 
+    // initially we have 'a' full cans and we req 'b' empty cans for a full can
+    cin>>a>>b ; 
+    int ans=0 , e=0 ; 
+    
+    while(1)
+        {
+            ans+=a ;  // consumed 'a' full cans
+            
+            e+=a ;  // now we increment the value of empty cans by 'a' 
+            
+            a=e/b ;  // we exchange empty cans for full cans. 
+            e=e%b ;  // remaining empty bottles with us
+            
+            if(a==0) break ;   // breaking condition of while loop
+            
+        }
+    
+    cout<<ans ;
+    return 0;
+}
