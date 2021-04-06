@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+// GEOMETRY EVERYWHERE
+
+int main() {
+    
+    ll n;
+    cin>>n ; 
+    ll a[4*n-1] , b[4*n-1] ; 
+    
+    for(ll i=0 ; i< 4*n -1 ; i++)
+    {
+        cin>>a[i]>>b[i] ; 
+    }
+    
+    sort(a,a+4*n-1) ; 
+    sort(b,b+4*n-1) ; 
+    
+    // now every x coordinate and y coordinate will appear even number of times EXCEPT ONE
+    // we now just have to look for that 1-x and 1-y coordinate which came odd no of times.
+    // ( observe the pattern for this. )
+    
+    
+    bool f=0 ; 
+    for(int i=1 ; i<4*n-1 ; i+=2)
+    {
+        if( a[i]!= a[i-1] ) { f=1 ; cout<<a[i-1]<<" " ; break ; }
+    }
+    if(f==0) { cout<<a[4*n-2]<<" " ;  }
+    
+    f=0 ; 
+    for(int i=1 ; i<4*n-1 ; i+=2)
+    {
+        if( b[i]!= b[i-1] ) { f=1 ; cout<<b[i-1] ; break ; }
+    }
+    if(f==0) { cout<<b[4*n-2]<<" " ;  }
+    
+    return 0;
+}
